@@ -18,6 +18,8 @@ A small C++ coupon calculator for a GitFlow collaboration lab.
 
 Run in Visual Studio Developer PowerShell:
 
+```powershell
 cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug
 cmake --build build
 .\build\mall.exe
+```
