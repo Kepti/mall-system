@@ -3,6 +3,7 @@
 
 int main()
 {
+   
     const long long amountCents = 10000;
 
     std::cout << "Original amount (cents): " << amountCents << '\n';

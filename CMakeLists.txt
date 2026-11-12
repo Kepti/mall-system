@@ -12,6 +12,14 @@ if(MSVC)
     add_compile_options(/utf-8)
 endif()
 
-add_executable(mall src/main.cpp)
+add_executable(mall src/main.cpp  "tests/coupon_tests.cpp")
 
 target_include_directories(mall PRIVATE src)
+
+enable_testing()
+
+add_executable(coupon_tests tests/coupon_tests.cpp)
+
+target_include_directories(coupon_tests PRIVATE src)
+
+add_test(NAME coupon_tests COMMAND coupon_tests)
