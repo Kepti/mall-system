@@ -4,7 +4,7 @@
 
 namespace mall {
 
-    inline constexpr int DEFAULT_DISCOUNT_PERCENT = 15;
+    inline constexpr int DEFAULT_DISCOUNT_PERCENT = 20;
 
     inline long long calculateFinalPrice(long long amountCents, int discountPercent)
     {
