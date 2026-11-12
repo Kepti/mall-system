@@ -23,3 +23,16 @@ cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug
 cmake --build build
 .\build\mall.exe
 ```
+## Version 1.0.0
+
+- Implement coupon calculation.
+- Validate amount and discount input.
+- Use a default discount of 20 percent.
+- Add unit checks for normal, boundary, and invalid input.
+
+## Test
+
+Run in Visual Studio Developer PowerShell after building:
+
+.\build\coupon_tests.exe
+ctest --test-dir build --output-on-failure
