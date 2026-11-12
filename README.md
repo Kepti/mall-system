@@ -1,38 +1,38 @@
-# mall-system
+ cmake_minimum_required(VERSION 3.20)
 
-A small C++ coupon calculator for a GitFlow collaboration lab.
+project(mall_system VERSION 1.0.0 LANGUAGES CXX)
 
-## Roles
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
-- PM-Bob: kepti
-- Dev-Alice: weekoffer0-978e687a
+if(MSVC)
+    set(CMAKE_MSVC_RUNTIME_LIBRARY
+        "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+    add_compile_options(/utf-8)
+endif()
 
-## Branches
+# 主程序：只包含应用程序入口
+add_executable(mall
+    src/main.cpp
+)
 
-- main: stable production code
-- develop: integration branch
-- feature/*: feature development
-- release/*: release preparation
+target_include_directories(mall PRIVATE src)
 
-## Build
+# 测试程序：使用独立的测试入口
+enable_testing()
 
-Run in Visual Studio Developer PowerShell:
+add_executable(coupon_tests
+    tests/coupon_tests.cpp
+)
 
-```powershell
-cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug
-cmake --build build
-.\build\mall.exe
-```
-## Version 1.0.0
+target_include_directories(coupon_tests PRIVATE src)
 
-- Implement coupon calculation.
-- Validate amount and discount input.
-- Use a default discount of 20 percent.
-- Add unit checks for normal, boundary, and invalid input.
+add_test(NAME coupon_tests COMMAND coupon_tests)
 
-## Test
+## Version 1.0.1
 
-Run in Visual Studio Developer PowerShell after building:
-
-.\build\coupon_tests.exe
-ctest --test-dir build --output-on-failure
+- Fix the CMake target configuration.
+- Build the application and unit tests as separate executables.
+- Resolve the duplicate main entry point linker error.
+- Verify the Release build and all 10 unit checks.
